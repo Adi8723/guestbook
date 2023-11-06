@@ -25,7 +25,6 @@ foreach ($paragraphs as $p) {// Für jeden Absatz im Array
 }
 
 print_r($filteredParagraph);
-
 ?>
 
 <?php foreach ($filteredParagraph as $p): ?>

@@ -4,6 +4,7 @@ require_once __DIR__ . '/inc/functions.php';
 
 if (!empty($_POST)) {
 
+    /*
     $title = '';
     if (isset($_POST['title'])) {
         $title = @(string) $_POST['title'];
@@ -17,6 +18,11 @@ if (!empty($_POST)) {
     if (isset($_POST['content'])) {
         $content = @(string) $_POST['content'];
     }
+*/
+
+$title   = @(string) ($_POST['title'] ?? '');
+$name    = @(string) ($_POST['name'] ?? '');
+$content = @(string) ($_POST['content'] ?? '');
 
     if (!empty($title) && !empty($content) && !empty($name)) {
         $stmt = $pdo->prepare('INSERT INTO entries (`name`, `title`, `content`) VALUES (:name, :title, :content)');
@@ -25,8 +31,10 @@ if (!empty($_POST)) {
         $stmt->bindParam('content', $content);
         $stmt->execute();
 
-        echo '<a href="index.php">Zürück zur seite </a>';
+        header('Location: index.php?success=1');
         die();
+        // echo '<a href="index.php">Zürück zur seite </a>';
+        // die();
     }
 }
 
